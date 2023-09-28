@@ -1,34 +1,31 @@
 import Container from '@/Providers/Container/Container'
-import { getClient } from '@/apollo/clietn'
+import logo from '@/assets/header/logo.png'
 import styles from '@/styles/desctop/Header.module.scss'
+import Image from 'next/image'
 import Link from 'next/link'
-import { GetAllCategoriesDocument } from '../../../../graphql/gql/graphql'
 import Header_right from './Header_right'
-import Menu from './Menu'
 
-export async function Header() {
-	const client = getClient()
-	const { data, loading } = await client.query({
-		query: GetAllCategoriesDocument,
-	})
+export function Header() {
 	return (
-		<header
-			className={`${styles.header} absolute text-black text-xl font-medium`}
-		>
+		<header className={`${styles.header} absolute text-xl font-medium z-[2]`}>
 			<Container>
 				<div className={styles.header__wrapper}>
 					<div className={styles.header__left}>
-						{loading ? <>Loading</> : <Menu title='Каталог' catalog={data} />}
-						<div className=''>
-							<Link href='/about'>О Нас</Link>
-						</div>
-						<div className=''>
-							<Link href='/contacts'>Контакты</Link>
-						</div>
+						<Link href='/catalog'>Каталог</Link>
+
+						<Link href='/about'>О Нас</Link>
+
+						<Link href='/contacts'>Контакты</Link>
 					</div>
 					<div className={styles.header__logo}>
 						<Link className={styles.header__logo__link} href='/'>
-							sandjma
+							<Image
+								className=' object-cover'
+								src={logo}
+								width={200}
+								height={100}
+								alt='logo'
+							/>
 						</Link>
 					</div>
 					<Header_right />

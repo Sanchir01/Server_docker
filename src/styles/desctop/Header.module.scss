@@ -9,17 +9,16 @@
 	&__left {
 		display: flex;
 		align-items: center;
-		gap: 10px;
+		gap: 15px;
 	}
 	&__logo {
 		font-size: 40px;
-		color: black;
 		text-transform: uppercase;
 		justify-self: center;
 	}
 	&__right {
 		justify-self: end;
-		@apply flex items-center gap-3;
+		@apply flex items-center gap-4;
 		&__favorites {
 			position: relative;
 			&__span {
@@ -37,9 +36,4 @@
 			}
 		}
 	}
-}
-
-.menu {
-	color: black;
-	border: none;
 }

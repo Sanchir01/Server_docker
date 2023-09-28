@@ -9,7 +9,8 @@ import {
 
 export function makeClient() {
 	const httpLink = new HttpLink({
-		uri: process.env.SERVER_URL,
+		uri: process.env.NEXT_PUBLIC_SERVER_URL,
+		credentials: 'include',
 	})
 
 	return new NextSSRApolloClient({
