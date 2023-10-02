@@ -9,3 +9,10 @@ mutation Login($loginInput: LoginInput!) {
 		}
 	}
 }
+
+mutation getNewToken {
+	newToken {
+		accessToken
+		refreshToken
+	}
+}

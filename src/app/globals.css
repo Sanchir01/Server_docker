@@ -111,3 +111,7 @@ body {
 	background-color: #fff !important;
 	border-radius: 0 !important;
 }
+.swiper-button-prev,
+.swiper-button-next {
+	color: white !important;
+}

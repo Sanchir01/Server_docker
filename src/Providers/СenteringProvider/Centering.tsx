@@ -3,7 +3,7 @@ import { FC, ReactNode } from 'react'
 
 const Centering: FC<{ children: ReactNode }> = ({ children }) => {
 	return (
-		<div className={`h-screen flex flex-col justify-center items-center ${styles.bg}`}>
+		<div className={`min-h-screen flex flex-col justify-center items-center ${styles.bg}`}>
 			{children}
 		</div>
 	)

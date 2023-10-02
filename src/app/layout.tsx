@@ -3,8 +3,11 @@ import Footer from '@/components/modules/Footer/Footer'
 import { Header } from '@/components/modules/Header/Header'
 import type { Metadata } from 'next'
 import { Raleway } from 'next/font/google'
+
 import { Toaster } from 'react-hot-toast'
 import './globals.css'
+import NextLoader from '@/components/ui/NextLoader'
+
 const releway = Raleway({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -20,6 +23,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={releway.className}>
+				<NextLoader/>
 				<ApolloWrapper>
 					<div className='wrapper'>
 						<Header />

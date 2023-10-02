@@ -1,6 +1,5 @@
-'use client'
 import { create } from 'zustand'
-import { createJSONStorage, devtools, persist } from 'zustand/middleware'
+import { devtools } from 'zustand/middleware'
 import { LoginMutation } from '../../graphql/gql/graphql'
 
 export interface userStore {
@@ -10,15 +9,15 @@ export interface userStore {
 
 export const useUserStore = create<userStore>()(
 	devtools(
-		persist(
-			set => ({
-				user: {} as LoginMutation,
-				addUser: (data: LoginMutation) => set({ user: data }),
-			}),
-			{
-				name: 'food-storage',
-				storage: createJSONStorage(() => localStorage),
-			}
-		)
+		set => ({
+			user: {} as LoginMutation,
+
+			addUser: (data: LoginMutation) => set({ user: data }),
+		})
+		// {
+		// 	version: 1,
+		// 	name: 'User',
+		// 	storage: createJSONStorage(() => localStorage),
+		// }
 	)
 )

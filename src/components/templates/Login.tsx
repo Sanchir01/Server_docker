@@ -12,6 +12,7 @@ import { useMutation } from '@apollo/client'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { clietn } from '@/apollo/DefaultClient'
+import { AuthService } from '@/service/auth.service'
 import { useUserStore } from '@/store/userProfile'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -33,7 +34,7 @@ import { Input } from '../ui/input'
 
 const Login: FC = () => {
 	const responserUser = useUserStore(state => state.addUser)
-	const user = useUserStore(state => state.user)
+
 	const form = useForm<IInputLogin>({
 		resolver: zodResolver<any>(loginSchema),
 		defaultValues: {
@@ -55,15 +56,15 @@ const Login: FC = () => {
 				},
 			},
 		})
-			.then(
-				({ data }) => (
-					responserUser(data!),
-					toast.success('Успешная регистрация'),
-					router.push('/')
-				)
-			)
-			.catch(er => (console.log(er), toast.error(er.message)))
-		console.log(user)
+			.then(({ data }) => {
+				if (data) {
+					useUserStore.setState({ user: data }),
+						toast.success('Успешная регистрация'),
+						router.push('/'),
+						AuthService.saveTokenToStorage(data.login.refreshToken)
+				}
+			})
+			.catch(er => toast.error(er.message))
 	}
 	return (
 		<Card>
