@@ -1,0 +1,48 @@
+.header {
+	@apply h-[115px] w-full;
+	&__sticky {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		color: black;
+		background-color: #fff;
+		@apply shadow-md;
+	}
+	&__wrapper {
+		padding: 25px 0;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	&__left {
+		display: flex;
+		align-items: center;
+		gap: 15px;
+	}
+	&__logo {
+		font-size: 40px;
+		text-transform: uppercase;
+		justify-self: center;
+	}
+	&__right {
+		justify-self: end;
+		@apply flex items-center gap-4;
+		&__favorites {
+			position: relative;
+			&__span {
+				top: 0;
+				right: 10px;
+				position: absolute;
+			}
+		}
+		&__cart {
+			position: relative;
+			&__span {
+				top: 2px;
+				right: 10px;
+				position: absolute;
+			}
+		}
+	}
+}

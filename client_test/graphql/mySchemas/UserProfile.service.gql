@@ -1,0 +1,33 @@
+query GetUserProfile {
+	getProfile {
+		id
+		isAdmin
+	}
+}
+
+mutation ToggleFavoritesProfile($productId: Float!) {
+	toggleFavoritesProfile(productId: $productId)
+}
+
+query GetUserFavoritesIdArray {
+	getProfile {
+		favorites {
+			id
+		}
+	}
+}
+
+query GetUserFavoritesAll {
+	getProfile {
+		favorites {
+			id
+			images
+			name
+			price
+			size {
+				name
+				id
+			}
+		}
+	}
+}
