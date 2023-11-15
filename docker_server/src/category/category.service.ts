@@ -13,12 +13,9 @@ import { returnCategoryObject } from './return-category.obj'
 
 @Injectable()
 export class CategoryService {
-	constructor(private prisma: PrismaService,) {}
+	constructor(private prisma: PrismaService) {}
 
 	async getAllCategory() {
-		// const TelegramBot = require('node-telegram-bot-api')
-		// const tokenTG = '6911170857:AAHutauMYF5aHRv56KqvhznT1OkuLpsG7r4'
-		
 		const allCategory = await this.prisma.category.findMany({
 			select: {
 				...returnCategoryObject
